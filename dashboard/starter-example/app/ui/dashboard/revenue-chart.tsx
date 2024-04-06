@@ -3,13 +3,14 @@
  * @FilePath: \next-learn\dashboard\starter-example\app\ui\dashboard\revenue-chart.tsx
  * @Date: 2024-04-02 19:23:50
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2024-04-02 19:53:07
+ * @LastEditTime: 2024-04-04 03:40:00
  * @author: Lin_kangjing
  */
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { Revenue } from '@/app/lib/definitions';
+import { fetchRevenue } from '@/app/lib/data';
 
 // This component is representational only.
 // For data visualization UI, check out:
@@ -17,13 +18,10 @@ import { Revenue } from '@/app/lib/definitions';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
+export default async function RevenueChart() {
   const chartHeight = 350;
   // NOTE: comment in this code when you get to this point in the course
+  const revenue = await fetchRevenue(); 
 
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 

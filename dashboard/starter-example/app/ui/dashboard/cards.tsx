@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @FilePath: \next-learn\dashboard\starter-example\app\ui\dashboard\cards.tsx
+ * @Date: 2024-04-02 19:23:50
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2024-04-04 03:49:36
+ * @author: Lin_kangjing
+ */
 import {
   BanknotesIcon,
   ClockIcon,
@@ -5,6 +13,7 @@ import {
   InboxIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
+import { fetchCardData } from '@/app/lib/data';
 
 const iconMap = {
   collected: BanknotesIcon,
@@ -14,18 +23,24 @@ const iconMap = {
 };
 
 export default async function CardWrapper() {
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
   return (
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
 
-      {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
+      <Card title="Collected" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPendingInvoices} type="pending" />
       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
       <Card
         title="Total Customers"
         value={numberOfCustomers}
         type="customers"
-      /> */}
+      />
     </>
   );
 }
